@@ -2,6 +2,7 @@ Demonstrates a potential memory leak in the Sproutcore datastore when unloadReco
 
 Assuming you have bpm installed:
 
+bpm rebuild
 bpm preview
 
 Then hit localhost:4020/index.html
