@@ -5,17 +5,16 @@ In order to log the behaviour described below, it is necessary to add some loggi
 
 after function get(obj, keyName) //line 26 add the following
 
-/** patch to log calls **/
-	 if(!window.callsToGetMethod) {
-	 		window.callsToGetMethod = {};
-	 }
+  if(!window.callsToGetMethod) {
+    window.callsToGetMethod = {};	 		
+  }
 
-   if(window.callsToGetMethod[keyName]) {
-     window.callsToGetMethod[keyName] = window.callsToGetMethod[keyName] + 1;
-   } else {
-     window.callsToGetMethod[keyName] = 1;
-   }
-/** end patch **/
+  if(window.callsToGetMethod[keyName]) {
+    window.callsToGetMethod[keyName] = window.callsToGetMethod[keyName] + 1;
+  } else {
+    window.callsToGetMethod[keyName] = 1;
+  }
+
 
 
 Assuming you have bpm installed:
