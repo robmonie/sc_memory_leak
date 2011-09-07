@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>sc-memory-leak-test</title>
+</head>
+
+<body>
+  <script src="assets/bpm_libs.js"></script>
+  <script src="assets/sc_memory_leak.js"></script>
+  <script>
+    spade.ready(function() {
+      spade.require("sproutcore");
+      spade.require("sproutcore-datastore");
+      spade.require('sc_memory_leak/main');
+    });
+  </script>
+
+  <script type="text/x-handlebars">
+    {{#collection SC.CollectionView contentBinding="App.countryArrayController"}}
+      {{content.name}}
+    {{/collection}}
+  </script>
+</body>
+</html>
+
