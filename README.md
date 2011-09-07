@@ -5,15 +5,15 @@ In order to log the behaviour described below, it is necessary to add some loggi
 
 after function get(obj, keyName) //line 26 add the following
 
-  if(!window.callsToGetMethod) {
-    window.callsToGetMethod = {};	 		
-  }
+    if(!window.callsToGetMethod) {
+      window.callsToGetMethod = {};	 		
+    }
 
-  if(window.callsToGetMethod[keyName]) {
-    window.callsToGetMethod[keyName] = window.callsToGetMethod[keyName] + 1;
-  } else {
-    window.callsToGetMethod[keyName] = 1;
-  }
+    if(window.callsToGetMethod[keyName]) {
+      window.callsToGetMethod[keyName] = window.callsToGetMethod[keyName] + 1;
+    } else {
+      window.callsToGetMethod[keyName] = 1;
+    }
 
 
 
