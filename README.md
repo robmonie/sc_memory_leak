@@ -3,7 +3,7 @@ Demonstrates a potential memory leak in the Sproutcore datastore when unloadReco
 
 In order to log the behaviour described below, it is necessary to add some logging code to sproutcore-metal/accessors.js. This seemed like something I couldn't dynamically patch.
 
-after function get(obj, keyName) //line 26 add the following
+after function get(obj, keyName) //line 26 of sproutcore-metal/accessors.js add the following
 
     if(!window.callsToGetMethod) {
       window.callsToGetMethod = {};	 		
