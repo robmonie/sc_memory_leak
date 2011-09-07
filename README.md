@@ -19,8 +19,8 @@ after function get(obj, keyName) //line 26 of sproutcore-metal/accessors.js add 
 
 Assuming you have bpm installed:
 
-bpm rebuild
-bpm preview
+  * bpm rebuild
+  * bpm preview
 
 Then hit localhost:4020/index.html
 
