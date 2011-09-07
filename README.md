@@ -1,4 +1,4 @@
-Demonstrates a potential memory leak in the Sproutcore datastore when unloadRecords is used.  The .bpm folder has intentionally been included with all dependencies as it has a couple of patches applied. One fixes a problem with sproutcore views and call stack overflows (https://github.com/tchak/sproutcore20/commit/b2c622c164dbbc92f5a164622c27b34dde1a3912), the other contains logging code inserted in sproutcore-metal/accessors.js to show the calls to SC.get over time.
+Demonstrates a potential memory leak in the Sproutcore datastore when unloadRecords is used.  Patches to sproutcore-metal/observer.js and sproutcore-metal/accessors.js have been included. One fixes a problem with sproutcore views and call stack overflows (https://github.com/tchak/sproutcore20/commit/b2c622c164dbbc92f5a164622c27b34dde1a3912), the other contains logging code inserted in sproutcore-metal/accessors.js to show the calls to SC.get over time.
 
 Assuming you have bpm installed:
 
