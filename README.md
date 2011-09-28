@@ -16,3 +16,12 @@ While it isn't the main point of this particular test, there's another interesti
 To reproduce, uncomment the line in main.js App.Datasource.refresh()
 
   /* store.unloadRecords(query.recordType) */
+
+
+## Finally...
+
+There are two other branches that show variants of the problem...
+
+The second branch called 'no_handlebars', just overrides render instead of using a template for each item in the collection. This one reduces the number of accumulating objects but doesn't prevent it.  One thing to note is that in master and no_handlebars branches, I am loading new records into the store on each view refresh so there will be some natural accumulation of objects due to this.
+
+I've created a second branch that strips everything back even further called 'basic_paging'. This does a single query and then lets you page through the results, assigning the sliced array to the controller content each time. This reduces the number of objects that accumulate each time (partly due to the fact that less items are being rendered each time) but they still accumulate.
