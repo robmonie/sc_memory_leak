@@ -58,7 +58,7 @@ App.CountryCollectionView = SC.CollectionView.extend({
   itemViewClass: SC.View.extend({
     render: function(buffer) {
 
-      buffer.push("<div>" + this.get('content').get('name') + "</div>")
+      buffer.push("<div>" + this.get('content').get('name') + "</div>");
     }
   })
 });
@@ -66,22 +66,13 @@ App.CountryCollectionView = SC.CollectionView.extend({
 
 $(function() {
 
-  var refreshTimes = []
-
   var collectionView = App.CountryCollectionView.create();
 
   collectionView.append("#country-view")
 
   $("#refresh").click(function() {
 
-    var startMillis = new Date().getTime();
-		console.log("Refreshing View...");
-
 		App.countryArrayController.set('content', App.Country.findAll());
-
-    var runTime = (new Date().getTime() - startMillis) / 1000;
-    console.log(runTime);
-		$("#load-time-log").append("<li>" + runTime + "</li>")
 
   });
 });
