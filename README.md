@@ -5,4 +5,6 @@ To see the problem:
   * Load index.html
   * Hit the 'Refresh View' button
   * Take a snapshot of the memory profile
-  * Repeat several times and then view comparisons of memory dump between refreshes of the view data.
+  * Repeat several times and then view comparisons of memory snapshots between refreshes of the view data.
+  * Each snapshot diff shows over many thousand more objects created than deleted, accumulating over time.
+  * This test when run in IE, will cause long running script warnings in the browser after several reloads.
