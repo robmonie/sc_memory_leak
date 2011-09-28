@@ -53,10 +53,24 @@ App.countryArrayController = SC.ArrayProxy.create({
 	content: []
 });
 
+App.CountryCollectionView = SC.CollectionView.extend({
+  contentBinding: 'App.countryArrayController',
+  itemViewClass: SC.View.extend({
+    render: function(buffer) {
+
+      buffer.push("<div>" + this.get('content').get('name') + "</div>")
+    }
+  })
+});
+
 
 $(function() {
 
   var refreshTimes = []
+
+  var collectionView = App.CountryCollectionView.create();
+
+  collectionView.append("#country-view")
 
   $("#refresh").click(function() {
 
