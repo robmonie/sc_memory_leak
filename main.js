@@ -1,5 +1,73 @@
 
-window.countries = [
+require("sc_memory_leak/sproutcore");
+require("sc_memory_leak/sproutcore-datastore");
+
+App = SC.Application.create({
+
+  NAMESPACE: 'App',
+  VERSION: '0.1.0',
+  store: SC.Store.create().from("App.Datasource")
+
+});
+
+
+App.Datasource = SC.DataSource.extend({
+
+	lastCountryId: 1,
+
+	fetch: function(store, query) {
+
+		var dataSource = this, storeKeys;
+
+		if(query.location === 'remote') {
+
+			//Incrementing the ids during each load to simulate different records... this helps to
+			//show the accumulation of records in the store.
+			App.countries.forEach(function(country) {
+				country.id = dataSource.get('lastCountryId');
+				dataSource.set('lastCountryId', country.id + 1);
+			});
+
+			//This would usually be in an asynch callback from ajax response
+/*			store.unloadRecords(query.recordType);*/
+			storeKeys = store.loadRecords(query.recordType, App.countries);
+			store.loadQueryResults(query, storeKeys);
+
+		}
+	}
+
+});
+
+App.Country = SC.Record.extend({
+	primaryKey: 'id',
+	name: SC.Record.attr(String, 'name')
+});
+
+SC.mixin(App.Country, {
+	findAll: function() {
+		var query = SC.Query.remote(App.Country, {
+			random: Math.random() //force a different query each time so cached one isn't used
+		});
+		return App.store.find(query);
+	}
+});
+
+App.countryArrayController = SC.ArrayProxy.create({
+	content: []
+});
+
+
+$(function() {
+  $("#refresh").click(function() {
+    SC.run(function() {
+  		console.log("Refreshing View...");
+  		App.countryArrayController.set('content', App.Country.findAll());
+  	});
+  });
+});
+
+
+App.countries = [
 {name: "United States"},
 {name: "Canada"},
 {name: "Afghanistan"},

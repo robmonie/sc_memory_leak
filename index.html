@@ -6,16 +6,11 @@
 </head>
 
 <body>
-  <script src="assets/bpm_libs.js"></script>
-  <script src="assets/sc_memory_leak.js"></script>
-  <script>
-    spade.ready(function() {
-      spade.require("sproutcore");
-      spade.require("sproutcore-datastore");
-      spade.require('sc_memory_leak/main');
-    });
-  </script>
-
+  <script src="jquery.js"></script>
+  <script src="sproutcore.js"></script>
+  <script src="sproutcore-datastore.js"></script>
+  <script src="main.js"></script>
+  <button id="refresh">Refresh View</button>
   <script type="text/x-handlebars">
     {{#collection SC.CollectionView contentBinding="App.countryArrayController"}}
       {{content.name}}
