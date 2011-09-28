@@ -59,10 +59,8 @@ App.countryArrayController = SC.ArrayProxy.create({
 
 $(function() {
   $("#refresh").click(function() {
-    SC.run(function() {
-  		console.log("Refreshing View...");
-  		App.countryArrayController.set('content', App.Country.findAll());
-  	});
+		console.log("Refreshing View...");
+		App.countryArrayController.set('content', App.Country.findAll());
   });
 });
 
