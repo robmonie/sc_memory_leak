@@ -19,21 +19,18 @@ App.Datasource = SC.DataSource.extend({
 
 		var dataSource = this, storeKeys;
 
-		if(query.location === 'remote') {
-
-			//Incrementing the ids during each load to simulate different records... this helps to
-			//show the accumulation of records in the store.
+			// Incrementing the ids during each load to simulate different records... this helps to
+			// show the accumulation of records in the store.
 			App.countries.forEach(function(country) {
 				country.id = dataSource.get('lastCountryId');
 				dataSource.set('lastCountryId', country.id + 1);
 			});
 
-			//This would usually be in an asynch callback from ajax response
-/*			store.unloadRecords(query.recordType);*/
+			// This would usually be in an asynch callback from ajax response
+      /* store.unloadRecords(query.recordType); -- uncomment this to make things worse */
 			storeKeys = store.loadRecords(query.recordType, App.countries);
 			store.loadQueryResults(query, storeKeys);
-
-		}
+      console.log("results loaded");
 	}
 
 });
@@ -58,9 +55,20 @@ App.countryArrayController = SC.ArrayProxy.create({
 
 
 $(function() {
+
+  var refreshTimes = []
+
   $("#refresh").click(function() {
+
+    var startMillis = new Date().getTime();
 		console.log("Refreshing View...");
+
 		App.countryArrayController.set('content', App.Country.findAll());
+
+    var runTime = (new Date().getTime() - startMillis) / 1000;
+    console.log(runTime);
+		$("#load-time-log").append("<li>" + runTime + "</li>")
+
   });
 });
 
