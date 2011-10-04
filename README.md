@@ -1,4 +1,4 @@
-**UPDATE: I pretty confident that this has been addressed by the following pull request - https://github.com/sproutcore/sproutcore20/pull/174
+**UPDATE: I'm pretty confident that this has been addressed by the following pull request - https://github.com/sproutcore/sproutcore20/pull/174
 
 ## Background
 
