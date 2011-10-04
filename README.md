@@ -1,3 +1,5 @@
+**UPDATE: I pretty confident that this has been addressed by the following pull request - https://github.com/sproutcore/sproutcore20/pull/174
+
 ## Background
 
 In our main application, we're experiencing significant performance issues with IE 7/8 after a small amount of usage. The performance degrades very quickly, to the point where long running script warnings are presented by IE to the user. We've attempted to reproduce this issue in a very basic application (this), to help in debugging and hopefully fixing what appears to be a memory leak in Sproutcore collection views when underlying bound data is refreshed, causing the view contents to update.
